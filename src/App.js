@@ -5,7 +5,7 @@ function App() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		fetch('https://basic-express-api.herokuapp.com/players')
+		fetch('https://basic-express-api.herokuapp.com/pets')
 			.then((res) => res.json())
 			.then((data) => setData(data));
 	}, []);
