@@ -5,7 +5,7 @@ function App() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		fetch('https://basic-express-api.herokuapp.com/pets')
+		fetch('https://basic-express-api.herokuapp.com/accounts')
 			.then((res) => res.json())
 			.then((data) => setData(data));
 	}, []);
@@ -13,7 +13,26 @@ function App() {
 	return (
 		<div className='App'>
             <h3>React front end hosted on Netlify connecting to Express backend hosted on Heroku</h3>
-            {!data ? 'Loading...' : data.map((item)=> <h5>{item.name}</h5>)}
+            
+            <table>
+                <thead>
+                    <tr>
+                    <th>account_id</th>
+                    <th>limit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {!data ? 'Loading...' : data.map((item)=> {
+                        return (
+                            <tr key={item._id}>
+                            <td>{item.account_id}</td>
+                            <td>{item.limit}</td>
+                            </tr>
+                        )
+                    })}
+                    </tbody>
+
+                    </table>
 		</div>
 	);
 }
